@@ -11,7 +11,7 @@ const login = async (req, res) => {
     const admin = await Admin.findOne({
       email,
     });
-
+    console.log("Admin:", admin);
     if (!admin) {
       return res.status(401).json({
         message: "Invalid Email",
@@ -19,7 +19,7 @@ const login = async (req, res) => {
     }
 
     const match = await bcrypt.compare(password, admin.password);
-
+    console.log("Password Match:", match);
     if (!match) {
       return res.status(401).json({
         message: "Invalid Password",
