@@ -23,7 +23,7 @@ const createCertificate = async (req, res) => {
 
       link: req.body.link,
 
-      image: req.file ? req.file.path : "",
+      image: req.file ? req.file.secure_url : "",
     });
 
     res.status(201).json(certificate);

@@ -38,7 +38,7 @@ const uploadProfilePhoto = async (req, res) => {
 
     if (!profile) {
       profile = await Profile.create({
-        image: req.file.path,
+        image = req.file.path,
       });
     } else {
       // Delete old image

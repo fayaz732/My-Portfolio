@@ -20,12 +20,12 @@ const uploadResume = async (req, res) => {
       resume = await Resume.create({
         fileName: req.file.originalname,
 
-        filePath: req.file.path,
+        filePath: req.file.secure_url,
       });
     } else {
       resume.fileName = req.file.originalname;
 
-      resume.filePath = req.file.path;
+      resume.filePath = req.file.secure_url;
 
       await resume.save();
     }

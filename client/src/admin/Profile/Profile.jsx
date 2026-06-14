@@ -109,7 +109,7 @@ function Profile() {
         {profile.image && (
           <img
             className="profile-image"
-           src={`${import.meta.env.VITE_SERVER_URL}/${profile.image}`}
+           src={profile.image}
             alt="Profile"
           />
         )}

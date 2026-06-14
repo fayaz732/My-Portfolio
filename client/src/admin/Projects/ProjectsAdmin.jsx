@@ -145,7 +145,7 @@ function ProjectsAdmin() {
             {project.image && (
               <img
                 className="project-image"
-                src={`${import.meta.env.VITE_SERVER_URL}/${project.image}`}
+                src={project.image}
                 alt={project.title}
               />
             )}
