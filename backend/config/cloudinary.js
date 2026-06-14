@@ -9,5 +9,7 @@ cloudinary.config({
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
-
+cloudinary.api.ping()
+  .then(result => console.log("Cloudinary OK:", result))
+  .catch(err => console.error("Cloudinary ERROR:", err));
 module.exports = cloudinary;
