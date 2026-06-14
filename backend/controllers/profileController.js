@@ -1,4 +1,3 @@
-const fs = require("fs");
 const Profile = require("../models/Profile");
 const getProfile = async (req, res) => {
   try {
@@ -38,17 +37,17 @@ const uploadProfilePhoto = async (req, res) => {
 
     if (!profile) {
       profile = await Profile.create({
-        image = req.file.path,
+        image : req.file.path,
       });
     } else {
       // Delete old image
-      if (profile.image) {
-        const oldImagePath = profile.image;
+      // if (profile.image) {
+      //   const oldImagePath = profile.image;
 
-        if (fs.existsSync(oldImagePath)) {
-          fs.unlinkSync(oldImagePath);
-        }
-      }
+      //   if (fs.existsSync(oldImagePath)) {
+      //     fs.unlinkSync(oldImagePath);
+      //   }
+      // }
 
       // Save new image
       profile.image = req.file.path;
