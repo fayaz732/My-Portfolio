@@ -31,25 +31,54 @@ const updateProfile = async (req, res) => {
   }
 };
 
+// const uploadProfilePhoto = async (req, res) => {
+//   try {
+//     let profile = await Profile.findOne();
+
+//     if (!profile) {
+//       profile = await Profile.create({
+//         image : req.file.path,
+//       });
+//     } else {
+//       // Delete old image
+//       if (profile.image) {
+//         const oldImagePath = profile.image;
+
+//         // if (fs.existsSync(oldImagePath)) {
+//         //   fs.unlinkSync(oldImagePath);
+//         // }
+//       }
+
+//       // Save new image
+//       profile.image = req.file.path;
+
+//       await profile.save();
+//     }
+
+//     res.json({
+//       success: true,
+//       image: profile.image,
+//     });
+//   } catch (error) {
+//     console.log(error);
+
+//     res.status(500).json({
+//       message: error.message,
+//     });
+//   }
+// };
+
 const uploadProfilePhoto = async (req, res) => {
   try {
+    console.log("FILE =>", req.file);
+
     let profile = await Profile.findOne();
 
     if (!profile) {
       profile = await Profile.create({
-        image : req.file.path,
+        image: req.file.path,
       });
     } else {
-      // Delete old image
-      // if (profile.image) {
-      //   const oldImagePath = profile.image;
-
-      //   if (fs.existsSync(oldImagePath)) {
-      //     fs.unlinkSync(oldImagePath);
-      //   }
-      // }
-
-      // Save new image
       profile.image = req.file.path;
 
       await profile.save();
@@ -60,14 +89,13 @@ const uploadProfilePhoto = async (req, res) => {
       image: profile.image,
     });
   } catch (error) {
-    console.log(error);
+    console.log("UPLOAD ERROR =>", error);
 
     res.status(500).json({
       message: error.message,
     });
   }
 };
-
 module.exports = {
   getProfile,
   updateProfile,
