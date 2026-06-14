@@ -2,31 +2,18 @@ const multer = require("multer");
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const cloudinary = require("../config/cloudinary");
 
-// const storage = new CloudinaryStorage({
-//   cloudinary,
-//   params: {
-//     folder: "portfolio/profile",
-//     allowed_formats: [
-//       "jpg",
-//       "jpeg",
-//       "png",
-//       "webp",
-//     ],
-//   },
-// });
-
-// module.exports = multer({
-//   storage,
-// });
 const storage = new CloudinaryStorage({
   cloudinary,
   params: async (req, file) => {
+    console.log("Uploading:", file.originalname);
+
     return {
       folder: "portfolio/profile",
-      resource_type: "image",
+      public_id: Date.now().toString(),
     };
   },
 });
-module.exports = multer({
-  storage,
-});
+
+const upload = multer({ storage });
+
+module.exports = upload;
