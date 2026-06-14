@@ -24,3 +24,6 @@ const storage = new CloudinaryStorage({
     folder: "portfolio/profile",
   }),
 });
+module.exports = multer({
+  storage,
+});
