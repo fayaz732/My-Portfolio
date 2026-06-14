@@ -1,0 +1,155 @@
+.footer{
+  margin-top:40px;
+
+  border-top:1px solid rgba(255,255,255,.08);
+
+  background:
+  rgba(255,255,255,.02);
+}
+
+.footer-content{
+  max-width:1200px;
+
+  margin:auto;
+
+  padding:60px 20px;
+
+  text-align:center;
+}
+
+.footer h2{
+  margin-bottom:20px;
+}
+
+.footer-description{
+  max-width:600px;
+
+  margin:auto;
+
+  color:#cbd5e1;
+
+  margin-bottom:30px;
+}
+
+.footer-contact{
+  display:flex;
+
+  justify-content:center;
+
+  gap:30px;
+
+  flex-wrap:wrap;
+
+  margin-bottom:30px;
+}
+
+.footer-contact p{
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  color:#e2e8f0;
+}
+
+.footer-contact svg{
+  color:#06b6d4;
+}
+
+.footer-social{
+  display:flex;
+
+  justify-content:center;
+
+  gap:25px;
+
+  font-size:32px;
+
+  margin-bottom:30px;
+}
+
+.footer-social a{
+  color:white;
+
+  transition:.3s;
+}
+
+.footer-social a:hover{
+  transform:
+  translateY(-5px)
+  scale(1.15);
+}
+
+.instagram-icon{
+  background:
+  linear-gradient(
+    45deg,
+    #f09433,
+    #e6683c,
+    #dc2743,
+    #cc2366,
+    #bc1888
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.youtube-icon{
+  color:#ff0000;
+}
+
+.footer-bottom{
+  color:#94a3b8;
+}
+
+@media(max-width:768px){
+
+  .footer-contact{
+    flex-direction:column;
+    gap:15px;
+  }
+
+}
+
+.footer{
+  scroll-margin-top:120px;
+}
+
+.footer:target{
+  animation:contactGlow 2s ease;
+}
+
+@keyframes contactGlow{
+
+  0%{
+    box-shadow:none;
+  }
+
+  50%{
+    box-shadow:
+      0 0 50px rgba(6,182,212,.35);
+  }
+
+  100%{
+    box-shadow:none;
+  }
+
+}
+
+.footer-contact p{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  padding:12px 20px;
+
+  border-radius:12px;
+
+  background:
+  rgba(255,255,255,.05);
+
+  border:
+  1px solid rgba(255,255,255,.08);
+}

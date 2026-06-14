@@ -1,0 +1,113 @@
+.navbar-container{
+  width:90%;
+  max-width:1200px;
+
+  margin:20px auto;
+
+  border-radius:20px;
+
+  background:
+  rgba(255,255,255,.05);
+
+  border:
+  1px solid rgba(255,255,255,.08);
+
+  backdrop-filter:blur(18px);
+
+  box-shadow:
+  0 10px 30px rgba(0,0,0,.25);
+}
+
+.logo{
+  font-weight:700 !important;
+
+  background:
+  linear-gradient(
+    90deg,
+    #06b6d4,
+    #8b5cf6
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.desktop-menu{
+  display:flex;
+  gap:10px;
+}
+
+.nav-btn{
+  position:relative !important;
+  transition:.3s !important;
+}
+
+.nav-btn::after{
+  content:"";
+
+  position:absolute;
+
+  left:10px;
+  bottom:4px;
+
+  width:0;
+  height:2px;
+
+  background:
+  linear-gradient(
+    90deg,
+    #06b6d4,
+    #8b5cf6
+  );
+
+  transition:.3s;
+}
+
+.nav-btn:hover::after{
+  width:70%;
+}
+
+.nav-btn:hover{
+  color:#06b6d4 !important;
+}
+
+.drawer-paper{
+  width:280px;
+
+  background:
+  #020617 !important;
+
+  color:white !important;
+
+  border-left:
+  1px solid rgba(255,255,255,.08);
+}
+
+.drawer-paper .MuiListItemButton-root{
+  transition:.3s;
+}
+
+.drawer-paper .MuiListItemButton-root:hover{
+  background:
+  rgba(255,255,255,.05);
+}
+
+.drawer-paper .MuiListItemText-root{
+  color:white;
+}
+
+.mobile-menu-btn{
+  display:none !important;
+}
+
+@media(max-width:900px){
+
+  .desktop-menu{
+    display:none;
+  }
+
+  .mobile-menu-btn{
+    display:flex !important;
+  }
+
+}

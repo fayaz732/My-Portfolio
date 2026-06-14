@@ -1,0 +1,112 @@
+.sidebar {
+  width: 260px;
+  height: 100vh;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  background: #0f172a;
+
+  border-right: 1px solid rgba(255,255,255,.08);
+
+  padding: 25px;
+
+  display: flex;
+  flex-direction: column;
+
+  z-index: 1000;
+}
+
+.sidebar-logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+
+  text-align: center;
+
+  margin-bottom: 35px;
+
+  background: linear-gradient(
+    90deg,
+    #06b6d4,
+    #8b5cf6
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sidebar-menu {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
+  list-style: none;
+
+  padding: 0;
+}
+
+.sidebar-link {
+  display: block;
+
+  padding: 14px 18px;
+
+  border-radius: 12px;
+
+  color: #cbd5e1;
+
+  text-decoration: none;
+
+  transition: .3s;
+}
+
+.sidebar-link:hover {
+  background: rgba(255,255,255,.05);
+
+  color: white;
+}
+
+.sidebar-link.active {
+  background: linear-gradient(
+    135deg,
+    #06b6d4,
+    #8b5cf6
+  );
+
+  color: white;
+}
+
+.logout-btn {
+  border: none;
+
+  padding: 14px;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  color: white;
+
+  font-weight: 600;
+
+  background: linear-gradient(
+    135deg,
+    #ef4444,
+    #dc2626
+  );
+}
+
+.logout-btn:hover {
+  opacity: .9;
+}
+
+@media (max-width:768px) {
+
+  .sidebar {
+    width: 220px;
+  }
+
+}
