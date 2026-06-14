@@ -6,20 +6,25 @@ const Admin = require("./models/Admin");
 
 mongoose.connect(process.env.MONGO_URI);
 
-async function updateAdmin() {
-  const password = await bcrypt.hash(process.env.ADMIN_PASSWORD, 10);
+async function createAdmin() {
+  const existingAdmin = await Admin.findOne({
+    email: process.env.ADMIN_EMAIL,
+  });
 
-  await Admin.updateOne(
-    {
-      email: process.env.ADMIN_EMAIL,
-    },
-    {
-      $set: {
-        password,
-      },
-    },
-  );
-  //   console.log("Password Updated");
+  if (existingAdmin) {
+    console.log("Admin already exists");
+    process.exit();
+  }
+
+  const hashedPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD, 10);
+
+  await Admin.create({
+    email: process.env.ADMIN_EMAIL,
+    password: hashedPassword,
+  });
+
+  console.log("Admin created successfully");
   process.exit();
 }
-updateAdmin();
+
+createAdmin();
