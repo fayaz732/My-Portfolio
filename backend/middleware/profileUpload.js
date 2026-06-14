@@ -19,10 +19,13 @@ const cloudinary = require("../config/cloudinary");
 //   storage,
 // });
 const storage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  params: async (req, file) => ({
-    folder: "portfolio/profile",
-  }),
+  cloudinary,
+  params: async (req, file) => {
+    return {
+      folder: "portfolio/profile",
+      resource_type: "image",
+    };
+  },
 });
 module.exports = multer({
   storage,
