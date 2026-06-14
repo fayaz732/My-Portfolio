@@ -19,7 +19,7 @@ function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/about" element={<Home />} />
+        <Route path="/" element={<Home />} />
 
         <Route
           path="/admin/login"
