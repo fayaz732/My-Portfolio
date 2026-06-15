@@ -14,24 +14,26 @@ const getResume = async (req, res) => {
 
 const uploadResume = async (req, res) => {
   try {
+    console.log("REQ FILE:", req.file);
+
     let resume = await Resume.findOne();
 
     if (!resume) {
       resume = await Resume.create({
         fileName: req.file.originalname,
-
         filePath: req.file.path,
       });
     } else {
       resume.fileName = req.file.originalname;
-
-      resume.filePath =req.file.path;
-
+      resume.filePath = req.file.path;
       await resume.save();
     }
 
+    console.log("SAVED RESUME:", resume);
+
     res.json(resume);
   } catch (error) {
+    console.log(error);
     res.status(500).json({
       message: error.message,
     });
