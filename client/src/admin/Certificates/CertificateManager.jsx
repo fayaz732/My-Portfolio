@@ -1,24 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import API from "../../services/api";
 import "../AdminCommon.css";
 import "./CertificatesAdmin.css";
 
 function CertificatesAdmin() {
-  const [certificates, setCertificates] = useState([
-    {
-      id: 1,
-      title: "MERN Stack Development",
-      issuer: "Udemy",
-      image: null,
-      link: "",
-    },
-    {
-      id: 2,
-      title: "Prompt Engineering",
-      issuer: "Coursera",
-      image: null,
-      link: "",
-    },
-  ]);
+  const [certificates, setCertificates] = useState([]);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -26,6 +12,20 @@ function CertificatesAdmin() {
     link: "",
     image: null,
   });
+
+  useEffect(() => {
+    fetchCertificates();
+  }, []);
+
+  const fetchCertificates = async () => {
+    try {
+      const { data } = await API.get("/certificates");
+
+      setCertificates(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleChange = (e) => {
     setFormData({
@@ -41,32 +41,52 @@ function CertificatesAdmin() {
     });
   };
 
-  const addCertificate = () => {
-    if (!formData.title || !formData.issuer) {
-      alert("Fill Required Fields");
-      return;
+  const addCertificate = async () => {
+    try {
+      if (!formData.title || !formData.issuer) {
+        alert("Fill Required Fields");
+        return;
+      }
+
+      const data = new FormData();
+
+      data.append("title", formData.title);
+      data.append("issuer", formData.issuer);
+      data.append("link", formData.link);
+
+      if (formData.image) {
+        data.append("image", formData.image);
+      }
+
+      await API.post("/certificates", data);
+
+      fetchCertificates();
+
+      setFormData({
+        title: "",
+        issuer: "",
+        link: "",
+        image: null,
+      });
+
+      alert("Certificate Added Successfully");
+    } catch (error) {
+      console.log(error);
+      alert("Failed To Add Certificate");
     }
-
-    setCertificates([
-      ...certificates,
-      {
-        id: Date.now(),
-        ...formData,
-      },
-    ]);
-
-    setFormData({
-      title: "",
-      issuer: "",
-      link: "",
-      image: null,
-    });
-
-    alert("Certificate Added Successfully");
   };
 
-  const deleteCertificate = (id) => {
-    setCertificates(certificates.filter((item) => item.id !== id));
+  const deleteCertificate = async (id) => {
+    try {
+      await API.delete(`/certificates/${id}`);
+
+      fetchCertificates();
+
+      alert("Certificate Deleted");
+    } catch (error) {
+      console.log(error);
+      alert("Delete Failed");
+    }
   };
 
   return (
@@ -76,7 +96,9 @@ function CertificatesAdmin() {
       <div className="certificate-stats-card">
         <h2>Current Certificates</h2>
 
-        <div className="certificate-count">{certificates.length}</div>
+        <div className="certificate-count">
+          {certificates.length}
+        </div>
 
         <p>Total Certificates</p>
       </div>
@@ -105,7 +127,11 @@ function CertificatesAdmin() {
           onChange={handleChange}
         />
 
-        <input type="file" accept="image/*" onChange={handleImage} />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImage}
+        />
 
         {formData.image && (
           <img
@@ -115,29 +141,33 @@ function CertificatesAdmin() {
           />
         )}
 
-        <button className="certificate-btn" onClick={addCertificate}>
+        <button
+          className="certificate-btn"
+          onClick={addCertificate}
+        >
           Add Certificate
         </button>
       </div>
 
       <div className="certificate-grid">
         {certificates.map((certificate) => (
-          <div key={certificate.id} className="certificate-card">
+          <div
+            key={certificate._id}
+            className="certificate-card"
+          >
             {certificate.image && (
               <img
                 className="certificate-image"
-                src={
-                  typeof certificate.image === "string"
-                    ? certificate.image
-                    : URL.createObjectURL(certificate.image)
-                }
+                src={certificate.image}
                 alt={certificate.title}
               />
             )}
 
             <h3>{certificate.title}</h3>
 
-            <p>Issued By: {certificate.issuer}</p>
+            <p>
+              Issued By: {certificate.issuer}
+            </p>
 
             {certificate.link && (
               <a
@@ -152,7 +182,11 @@ function CertificatesAdmin() {
 
             <button
               className="delete-btn"
-              onClick={() => deleteCertificate(certificate.id)}
+              onClick={() =>
+                deleteCertificate(
+                  certificate._id
+                )
+              }
             >
               Delete
             </button>
