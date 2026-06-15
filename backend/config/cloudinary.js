@@ -1,15 +1,24 @@
+require("dotenv").config();
 const cloudinary = require("cloudinary").v2;
-
-console.log("Cloud Name:", process.env.CLOUDINARY_CLOUD_NAME);
-console.log("API Key Exists:", !!process.env.CLOUDINARY_API_KEY);
-console.log("API Secret Exists:", !!process.env.CLOUDINARY_API_SECRET);
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
-cloudinary.api.ping()
-  .then(result => console.log("Cloudinary OK:", result))
-  .catch(err => console.error("Cloudinary ERROR:", err));
-module.exports = cloudinary;
+
+(async () => {
+  try {
+    const result = await cloudinary.uploader.upload(
+      "C:/Users/fayaz/Fayaz_portfolio/backend/test.jpg",
+      {
+        resource_type: "image",
+        folder: "portfolio"
+      }
+    );
+
+    console.log(result);
+  } catch (e) {
+    console.dir(e, { depth: null });
+  }
+})();
