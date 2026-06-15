@@ -30,10 +30,7 @@ function Projects() {
           <div key={project._id} className="project-card">
             <div className="project-image">
               {project.image ? (
-                <img
-                 src={`${import.meta.env.VITE_SERVER_URL}/${profile.image}`}
-                  alt={project.title}
-                />
+                <img src={project.image} alt={project.title} />
               ) : (
                 <div className="upload-box">No Screenshot</div>
               )}

@@ -39,7 +39,7 @@ function Resume() {
 
         <div className="resume-buttons">
           <a
-            href={`${import.meta.env.VITE_SERVER_URL}/${resume.filePath}`}
+            href={resume.filePath}
             target="_blank"
             rel="noreferrer"
             className="resume-btn"
@@ -48,7 +48,7 @@ function Resume() {
           </a>
 
           <a
-            href={`${import.meta.env.VITE_SERVER_URL}/${resume.filePath}`}
+           href={resume.filePath}
             download
             className="resume-btn"
           >

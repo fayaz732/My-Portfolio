@@ -33,7 +33,7 @@ function Certificates() {
           >
             {certificate.image && (
               <img
-                src={`${import.meta.env.VITE_SERVER_URL}/${certificate.image}`}
+                src={certificate.image}
                 alt={certificate.title}
                 className="certificate-image"
               />

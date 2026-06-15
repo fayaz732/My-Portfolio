@@ -112,7 +112,7 @@ function Hero() {
           <div className="profile-inner">
             {profile.image ? (
               <img
-                src={`${import.meta.env.VITE_SERVER_URL}/${profile.image}`}
+                src={profile.image}
                 alt={profile.name}
                 style={{
                   width: "100%",
