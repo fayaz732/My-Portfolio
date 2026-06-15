@@ -1,4 +1,3 @@
-require("dotenv").config();
 const cloudinary = require("cloudinary").v2;
 
 cloudinary.config({
@@ -7,18 +6,4 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-(async () => {
-  try {
-    const result = await cloudinary.uploader.upload(
-      "C:/Users/fayaz/Fayaz_portfolio/backend/test.jpg",
-      {
-        resource_type: "image",
-        folder: "portfolio"
-      }
-    );
-
-    console.log(result);
-  } catch (e) {
-    console.dir(e, { depth: null });
-  }
-})();
+module.exports = cloudinary;
