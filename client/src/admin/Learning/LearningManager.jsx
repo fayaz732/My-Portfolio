@@ -1,27 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import API from "../../services/api";
 import "../AdminCommon.css";
 import "./LearningAdmin.css";
 
 function LearningAdmin() {
-  const [learning, setLearning] = useState([
-    {
-      id: 1,
-      title: "Java",
-      description:
-        "Learning Core Java, OOP Concepts, Collections Framework and Problem Solving.",
-    },
-    {
-      id: 2,
-      title: "Data Structures & Algorithms",
-      description:
-        "Improving coding skills and preparing for placements.",
-    },
-  ]);
+  const [learning, setLearning] = useState([]);
 
   const [formData, setFormData] = useState({
     title: "",
     description: "",
   });
+
+  useEffect(() => {
+    fetchLearning();
+  }, []);
+
+  const fetchLearning = async () => {
+    try {
+      const { data } = await API.get("/learning");
+
+      setLearning(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const handleChange = (e) => {
     setFormData({
@@ -30,39 +32,45 @@ function LearningAdmin() {
     });
   };
 
-  const addLearning = () => {
-    if (
-      !formData.title ||
-      !formData.description
-    ) {
-      alert("Fill all fields");
-      return;
-    }
+  const addLearning = async () => {
+    try {
+      if (!formData.title || !formData.description) {
+        alert("Fill all fields");
+        return;
+      }
 
-    setLearning([
-      ...learning,
-      {
-        id: Date.now(),
+      await API.post("/learning", {
         title: formData.title,
-        description:
-          formData.description,
-      },
-    ]);
+        description: formData.description,
+      });
 
-    setFormData({
-      title: "",
-      description: "",
-    });
+      fetchLearning();
 
-    alert("Topic Added");
+      setFormData({
+        title: "",
+        description: "",
+      });
+
+      alert("Topic Added Successfully");
+    } catch (err) {
+      console.log(err);
+
+      alert("Failed To Add Topic");
+    }
   };
 
-  const deleteLearning = (id) => {
-    setLearning(
-      learning.filter(
-        (item) => item.id !== id
-      )
-    );
+  const deleteLearning = async (id) => {
+    try {
+      await API.delete(`/learning/${id}`);
+
+      fetchLearning();
+
+      alert("Topic Deleted");
+    } catch (err) {
+      console.log(err);
+
+      alert("Delete Failed");
+    }
   };
 
   return (
@@ -72,9 +80,7 @@ function LearningAdmin() {
       <div className="learning-stats-card">
         <h2>Current Learning Topics</h2>
 
-        <div className="learning-count">
-          {learning.length}
-        </div>
+        <div className="learning-count">{learning.length}</div>
 
         <p>Total Topics</p>
       </div>
@@ -96,29 +102,21 @@ function LearningAdmin() {
           onChange={handleChange}
         />
 
-        <button
-          className="learning-btn"
-          onClick={addLearning}
-        >
+        <button className="learning-btn" onClick={addLearning}>
           Add Topic
         </button>
       </div>
 
       <div className="learning-grid">
         {learning.map((item) => (
-          <div
-            key={item.id}
-            className="learning-card"
-          >
+          <div key={item._id} className="learning-card">
             <h3>{item.title}</h3>
 
             <p>{item.description}</p>
 
             <button
               className="delete-btn"
-              onClick={() =>
-                deleteLearning(item.id)
-              }
+              onClick={() => deleteLearning(item._id)}
             >
               Delete
             </button>

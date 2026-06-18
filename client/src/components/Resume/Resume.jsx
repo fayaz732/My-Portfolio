@@ -30,23 +30,12 @@ function Resume() {
       <h2>Resume</h2>
 
       <div className="resume-card">
-        <h3>My Resume</h3>
-
         <p>
           Download my latest resume to learn more about my skills, projects and
           experience.
         </p>
 
         <div className="resume-buttons">
-          <a
-            href={resume.filePath}
-            target="_blank"
-            rel="noreferrer"
-            className="resume-btn"
-          >
-            View Resume
-          </a>
-
           <a
            href={resume.filePath}
             download

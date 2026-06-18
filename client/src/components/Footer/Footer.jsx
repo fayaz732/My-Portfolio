@@ -34,7 +34,7 @@ function Footer() {
 
           <p>
             <FaPhone />
-            <span>9389XXXXXX</span>
+            <span>9389389627778</span>
           </p>
 
           <p>
