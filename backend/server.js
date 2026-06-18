@@ -20,17 +20,17 @@ connectDB();
 const app = express();
 
 /* Middleware */
-app.use(cors());
-// app.use(
-//   cors({
-//     origin: [
-//       "http://localhost:5173",
-//       process.env.FRONTEND_URL,
-//     ],
-//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-//     credentials: true,
-//   })
-// );
+// app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://fayaz-myportfolio.netlify.app",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    credentials: true,
+  })
+);
 
 
 app.use(express.json());
