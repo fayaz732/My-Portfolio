@@ -21,11 +21,13 @@ const app = express();
 
 /* Middleware */
 
+const cors = require("cors");
+
 app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://fayaz-myportfolio.netlify.app",
+      process.env.FRONTEND_URL,
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
