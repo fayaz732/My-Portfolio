@@ -13,6 +13,7 @@ function Profile() {
     github: "https://github.com/fayaz732",
     instagram: "https://instagram.com/faiu_09",
     youtube: "https://youtube.com/@explore_with_fayaz",
+    linkedin:"https://www.linkedin.com/in/fayaz-patel-b51ab72bb",
     image: "",
   });
 
@@ -160,6 +161,13 @@ function Profile() {
           name="youtube"
           placeholder="YouTube Link"
           value={profile.youtube || ""}
+          onChange={handleChange}
+        />
+
+         <input
+          name="linkedin"
+          placeholder="linkedin Link"
+          value={profile.linkedin || ""}
           onChange={handleChange}
         />
 
