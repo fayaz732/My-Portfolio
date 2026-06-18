@@ -1,155 +1,219 @@
-.footer{
-  margin-top:40px;
+.footer {
+  margin-top: 40px;
 
-  border-top:1px solid rgba(255,255,255,.08);
+  border-top: 1px solid rgba(255,255,255,.08);
 
-  background:
-  rgba(255,255,255,.02);
+  background: rgba(255,255,255,.02);
+
+  scroll-margin-top: 120px;
 }
 
-.footer-content{
-  max-width:1200px;
+.footer-content {
 
-  margin:auto;
+  max-width: 1200px;
 
-  padding:60px 20px;
+  margin: auto;
 
-  text-align:center;
+  padding: 60px 20px;
+
+  text-align: center;
 }
 
-.footer h2{
-  margin-bottom:20px;
+.footer h2 {
+
+  margin-bottom: 20px;
+
+  font-size: 2rem;
+
+  color: #fff;
 }
 
-.footer-description{
-  max-width:600px;
+.footer-description {
 
-  margin:auto;
+  max-width: 650px;
 
-  color:#cbd5e1;
+  margin: auto;
 
-  margin-bottom:30px;
+  color: #cbd5e1;
+
+  line-height: 1.8;
+
+  margin-bottom: 35px;
 }
 
-.footer-contact{
-  display:flex;
+/* CONTACT */
 
-  justify-content:center;
+.footer-contact {
 
-  gap:30px;
+  display: flex;
 
-  flex-wrap:wrap;
+  justify-content: center;
 
-  margin-bottom:30px;
+  gap: 25px;
+
+  flex-wrap: wrap;
+
+  margin-bottom: 35px;
 }
 
-.footer-contact p{
-  display:flex;
+.footer-contact p {
 
-  align-items:center;
+  display: flex;
 
-  gap:10px;
+  align-items: center;
 
-  color:#e2e8f0;
+  gap: 10px;
+
+  padding: 12px 20px;
+
+  border-radius: 12px;
+
+  background: rgba(255,255,255,.05);
+
+  border: 1px solid rgba(255,255,255,.08);
+
+  color: #e2e8f0;
 }
 
-.footer-contact svg{
-  color:#06b6d4;
+.footer-contact svg {
+
+  color: #06b6d4;
+
+  font-size: 18px;
 }
 
-.footer-social{
-  display:flex;
+/* SOCIAL */
 
-  justify-content:center;
+.footer-social {
 
-  gap:25px;
+  display: flex;
 
-  font-size:32px;
+  justify-content: center;
 
-  margin-bottom:30px;
+  gap: 18px;
+
+  margin-bottom: 35px;
 }
 
-.footer-social a{
-  color:white;
+.footer-social a {
 
-  transition:.3s;
+  width: 50px;
+
+  height: 50px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-decoration: none;
+
+  font-size: 22px;
+
+  transition: .3s ease;
+
+  box-shadow:
+    0 5px 20px rgba(0,0,0,.25);
 }
 
-.footer-social a:hover{
+.footer-social a:hover {
+
   transform:
-  translateY(-5px)
-  scale(1.15);
+    translateY(-5px)
+    scale(1.1);
 }
 
-.instagram-icon{
+/* GitHub */
+
+.footer-social a:first-child {
+
+  background: #181717;
+
+  color: white;
+}
+
+/* Instagram */
+
+.footer-social .instagram-icon {
+
   background:
-  linear-gradient(
-    45deg,
-    #f09433,
-    #e6683c,
-    #dc2743,
-    #cc2366,
-    #bc1888
-  );
+    linear-gradient(
+      45deg,
+      #feda75,
+      #fa7e1e,
+      #d62976,
+      #962fbf,
+      #4f5bd5
+    );
 
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+  color: white !important;
 }
 
-.youtube-icon{
-  color:#ff0000;
+/* YouTube */
+
+.footer-social .youtube-icon {
+
+  background: #FF0000;
+
+  color: white !important;
 }
 
-.footer-bottom{
-  color:#94a3b8;
+/* LinkedIn */
+
+.footer-social .linkedin-icon {
+
+  background: #0077B5;
+
+  color: white !important;
 }
 
-@media(max-width:768px){
+/* Bottom */
 
-  .footer-contact{
-    flex-direction:column;
-    gap:15px;
+.footer-bottom {
+
+  color: #94a3b8;
+
+  font-size: .95rem;
+}
+
+/* Glow Animation */
+
+.footer:target {
+
+  animation: contactGlow 2s ease;
+}
+
+@keyframes contactGlow {
+
+  0% {
+
+    box-shadow: none;
   }
 
-}
+  50% {
 
-.footer{
-  scroll-margin-top:120px;
-}
-
-.footer:target{
-  animation:contactGlow 2s ease;
-}
-
-@keyframes contactGlow{
-
-  0%{
-    box-shadow:none;
-  }
-
-  50%{
     box-shadow:
       0 0 50px rgba(6,182,212,.35);
   }
 
-  100%{
-    box-shadow:none;
-  }
+  100% {
 
+    box-shadow: none;
+  }
 }
 
-.footer-contact p{
-  display:flex;
-  align-items:center;
-  gap:10px;
+/* Responsive */
 
-  padding:12px 20px;
+@media(max-width:768px){
 
-  border-radius:12px;
+  .footer-contact{
 
-  background:
-  rgba(255,255,255,.05);
+    flex-direction: column;
 
-  border:
-  1px solid rgba(255,255,255,.08);
+    gap: 15px;
+  }
+
 }

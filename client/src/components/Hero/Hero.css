@@ -14,7 +14,7 @@
     ),
     radial-gradient(
       circle at bottom right,
-      rgba(6, 182, 212, 0.2),
+      rgba(6, 182, 212, 0.20),
       transparent 35%
     ),
     #020617;
@@ -45,7 +45,6 @@
 
 .hero-left h1 {
   font-size: 5.5rem;
-
   margin-top: 10px;
 
   background: linear-gradient(
@@ -76,6 +75,8 @@
 
   font-size: 1.5rem;
   font-weight: 600;
+
+  min-height: 40px;
 }
 
 .hero-left p {
@@ -86,13 +87,20 @@
   color: #cbd5e1;
 
   line-height: 1.8;
+
+  font-size: 1.05rem;
 }
+
+/* BUTTONS */
 
 .hero-buttons {
   display: flex;
+
   gap: 15px;
 
   margin-top: 30px;
+
+  flex-wrap: wrap;
 }
 
 .hero-btn {
@@ -119,6 +127,10 @@
 
 .hero-btn:hover {
   transform: translateY(-5px);
+
+  box-shadow:
+    0 0 20px rgba(6,182,212,.5),
+    0 0 40px rgba(139,92,246,.4);
 }
 
 .hero-btn-outline {
@@ -152,14 +164,16 @@
 }
 
 .social-icons a {
-
   width: 52px;
+
   height: 52px;
 
   border-radius: 50%;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   text-decoration: none;
@@ -172,77 +186,73 @@
     0 5px 20px rgba(0,0,0,.25);
 }
 
-.social-icons a:hover{
+.social-icons a:hover {
   transform:
     translateY(-5px)
     scale(1.1);
 }
 
-/* Github */
+/* GitHub */
 
-.social-icons a:first-child{
+.social-icons a:first-child {
+  background: #181717;
 
-  background:#181717;
-
-  color:#fff;
+  color: white;
 }
 
 /* Instagram */
 
-.instagram-icon{
+.instagram-icon {
+  background: linear-gradient(
+    45deg,
+    #feda75,
+    #fa7e1e,
+    #d62976,
+    #962fbf,
+    #4f5bd5
+  );
 
-  background:
-    linear-gradient(
-      45deg,
-      #feda75,
-      #fa7e1e,
-      #d62976,
-      #962fbf,
-      #4f5bd5
-    );
-
-  color:white !important;
+  color: white !important;
 }
 
-/* Youtube */
+/* YouTube */
 
-.youtube-icon{
+.youtube-icon {
+  background: #FF0000;
 
-  background:#FF0000;
-
-  color:white !important;
+  color: white !important;
 }
 
-/* Linkedin */
+/* LinkedIn */
 
-.linkedin-icon{
+.linkedin-icon {
+  background: #0077B5;
 
-  background:#0077B5;
-
-  color:white !important;
+  color: white !important;
 }
 
-/* PROFILE */
+/* PROFILE IMAGE */
 
 .profile-circle {
-
   width: 380px;
+
   height: 380px;
 
   border-radius: 50%;
 
   padding: 6px;
 
-  background:
-    linear-gradient(
-      135deg,
-      #06b6d4,
-      #8b5cf6
-    );
+  background: linear-gradient(
+    135deg,
+    #06b6d4,
+    #8b5cf6
+  );
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
 
   box-shadow:
     0 0 30px rgba(6,182,212,.35),
@@ -251,86 +261,99 @@
   animation: float 4s ease infinite;
 }
 
-.profile-inner{
+.profile-inner {
+  width: 100%;
 
-  width:100%;
-  height:100%;
+  height: 100%;
 
-  border-radius:50%;
+  border-radius: 50%;
 
-  background:#020617;
+  background: #020617;
 
-  overflow:hidden;
+  overflow: hidden;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
 }
 
-.profile-inner img{
+.profile-inner img {
+  width: 100%;
 
-  width:100%;
-  height:100%;
+  height: 100%;
 
-  object-fit:cover;
+  object-fit: cover;
 
-  border-radius:50%;
+  border-radius: 50%;
 }
 
-.profile-text{
+.profile-text {
+  color: #94a3b8;
 
-  color:#94a3b8;
+  text-align: center;
 
-  text-align:center;
+  font-size: 28px;
 
-  font-size:28px;
+  font-weight: 700;
 
-  font-weight:700;
+  line-height: 1.4;
 }
 
-@keyframes float{
+/* FLOAT ANIMATION */
 
-  0%{
-    transform:translateY(0);
+@keyframes float {
+  0% {
+    transform: translateY(0);
   }
 
-  50%{
-    transform:translateY(-15px);
+  50% {
+    transform: translateY(-15px);
   }
 
-  100%{
-    transform:translateY(0);
+  100% {
+    transform: translateY(0);
   }
-
 }
 
-@media(max-width:900px){
+/* RESPONSIVE */
 
-  .hero-content{
+@media (max-width: 900px) {
 
-    justify-content:center;
-
-    text-align:center;
+  .hero {
+    padding: 90px 6% 60px;
   }
 
-  .hero-left h1{
+  .hero-content {
+    justify-content: center;
 
-    font-size:3.5rem;
+    text-align: center;
   }
 
-  .social-icons{
-
-    justify-content:center;
+  .hero-left h1 {
+    font-size: 3.5rem;
   }
 
-  .hero-buttons{
-
-    justify-content:center;
+  .hero-role {
+    font-size: 1.2rem;
   }
 
-  .profile-circle{
+  .social-icons {
+    justify-content: center;
+  }
 
-    width:260px;
-    height:260px;
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .profile-circle {
+    width: 260px;
+
+    height: 260px;
+  }
+
+  .profile-text {
+    font-size: 20px;
   }
 }
