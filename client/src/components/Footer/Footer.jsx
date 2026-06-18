@@ -5,6 +5,7 @@ import {
   FaEnvelope,
   FaPhone,
   FaMapMarkerAlt,
+  FaLinkedin,
 } from "react-icons/fa";
 
 import "./Footer.css";
@@ -71,7 +72,15 @@ function Footer() {
           >
             <FaYoutube />
           </a>
-
+          <a
+           href="https://www.linkedin.com/in/fayaz-patel-b51ab72bb"
+            target="_blank"
+            rel="noreferrer"
+            className="linkedin-icon"
+          >
+            <FaLinkedin/>
+          </a>
+          
         </div>
 
         <div className="footer-bottom">

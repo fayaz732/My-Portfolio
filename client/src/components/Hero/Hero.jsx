@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { TypeAnimation } from "react-type-animation";
 
-import { FaGithub, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaGithub, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 
 import API from "../../services/api";
 
@@ -104,6 +104,14 @@ function Hero() {
               className="youtube-icon"
             >
               <FaYoutube />
+            </a>
+              <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="linkedin-icon"
+            >
+              <FaLinkedin />
             </a>
           </div>
         </div>

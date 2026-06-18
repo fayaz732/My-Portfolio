@@ -71,6 +71,8 @@ const profileSchema = new mongoose.Schema(
 
     youtube: String,
 
+    linkedin:String,
+
     image: String,
   },
   {
