@@ -25,10 +25,13 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      process.env.FRONTEND_URL,
+      "https://fayaz-myportfolio.netlify.app",
     ],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    credentials: true,
   })
 );
+
 
 app.use(express.json());
 
