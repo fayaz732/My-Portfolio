@@ -46,8 +46,6 @@ function Hero() {
                 2000,
                 "AI Engineer",
                 2000,
-                "Prompt Engineer",
-                2000,
               ]}
               repeat={Infinity}
             />

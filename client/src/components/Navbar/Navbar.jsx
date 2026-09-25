@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import "./Navbar.css";
-
+import logo from "../Assests/fayaz-ai-logo.png";
 function Navbar() {
   const [open, setOpen] = useState(false);
 
@@ -42,9 +42,9 @@ function Navbar() {
       >
         <div className="navbar-container">
           <Toolbar>
-            <Typography variant="h5" className="logo" sx={{ flexGrow: 1 }}>
-              Fayaz
-            </Typography>
+            <div className="logo" onClick={() => scrollToSection("hero")}>
+              <img src={logo} alt="Fayaz AI Developer Logo" />
+            </div>
 
             <div className="desktop-menu">
               {menuItems.map((item) => (
