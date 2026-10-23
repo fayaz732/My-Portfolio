@@ -65,7 +65,7 @@ function Footer() {
             <FaYoutube />
           </a>
           <a
-            href="https://www.linkedin.com/in/fayaz-patel-b51ab72bb"
+            href="https://www.linkedin.com/in/fayaz-b51ab72bb/"
             target="_blank"
             rel="noreferrer"
             className="linkedin-icon"
